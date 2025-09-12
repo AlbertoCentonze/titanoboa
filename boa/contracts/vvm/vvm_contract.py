@@ -208,11 +208,8 @@ class VVMContract(ABIContract):
         and the wrapper returns that type. Otherwise, no value is returned.
         """
         wrapper_src = generate_source_for_arbitrary_stmt(stmt, return_type)
-        # Always force, so multiple evals reuse the same name without conflicts
-        self.inject_function(wrapper_src, force=True)
-
-        # Call the injected function and return its value (if any)
-        fn = getattr(self, "__boa_debug__")
+        # Create an ephemeral injected function instance without attaching to self
+        fn = _InjectVVMFunction(wrapper_src, self)
         return fn(value=value, gas=gas, sender=sender)
 
 
