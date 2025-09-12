@@ -1,4 +1,5 @@
 import textwrap
+from typing import Optional
 
 import vyper.ast as vy_ast
 import vyper.semantics.analysis as analysis
@@ -148,32 +149,54 @@ def generate_bytecode_for_internal_fn(fn):
     return compile_vyper_function(wrapper_code, contract)
 
 
-def generate_bytecode_for_arbitrary_stmt(source_code, contract):
-    """Wraps arbitrary stmts with external fn and generates bytecode"""
+def generate_bytecode_for_arbitrary_stmt(
+    source_code, contract, return_type: Optional[str] = None
+):
+    """Generate bytecode for an arbitrary stmt by compiling a wrapper source.
 
-    ast = parse_to_ast(source_code)
+    Performs type inference for expressions when ``return_type`` is not
+    provided, using the VyperContract's namespace.
+    """
 
-    ast = ast.body[0]
+    # Attempt to infer return type for expressions if not explicitly provided
+    if return_type is None:
+        ast = parse_to_ast(source_code).body[0]
 
-    return_sig = ""
-    debug_body = source_code
+        if isinstance(ast, vy_ast.Expr):
+            with contract.override_vyper_namespace():
+                try:
+                    ast_typ = get_exact_type_from_node(ast.value)
+                    return_type = f"{ast_typ}"
+                except InvalidType:
+                    pass
 
-    if isinstance(ast, vy_ast.Expr):
-        with contract.override_vyper_namespace():
-            try:
-                ast_typ = get_exact_type_from_node(ast.value)
-                return_sig = f"-> {ast_typ}"
-                debug_body = f"return {source_code}"
-            except InvalidType:
-                pass
+    wrapper_code = generate_source_for_arbitrary_stmt(source_code, return_type)
+    return compile_vyper_function(wrapper_code, contract)
 
-    # wrap code in function so that we can easily generate code for it
+
+def generate_source_for_arbitrary_stmt(
+    source_code: str, return_type: Optional[str] = None
+) -> str:
+    """Generate wrapper source for an arbitrary Vyper statement/expression.
+
+    - If ``return_type`` is provided, treat ``source_code`` as an expression
+      and emit a wrapper that returns that type.
+    - Otherwise, emit a statement wrapper without a return.
+    """
+
+    if return_type:
+        return_sig = f"-> {return_type}"
+        debug_body = f"return {source_code}"
+    else:
+        return_sig = ""
+        debug_body = source_code
+
     wrapper_code = textwrap.dedent(
         f"""
         @external
         @payable
         def __boa_debug__() {return_sig}:
             {debug_body}
-    """
+        """
     )
-    return compile_vyper_function(wrapper_code, contract)
+    return wrapper_code

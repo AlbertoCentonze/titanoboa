@@ -4,11 +4,11 @@ from typing import Optional
 import vvm
 
 from boa.contracts.abi.abi_contract import ABIContract, ABIContractFactory, ABIFunction
+from boa.contracts.vyper.compiler_utils import generate_source_for_arbitrary_stmt
 from boa.environment import Env
 from boa.rpc import to_bytes
 from boa.util.abi import Address
 from boa.util.eip5202 import generate_blueprint_bytecode
-import textwrap
 
 
 class VVMBlueprint(ABIContract):
@@ -205,7 +205,7 @@ class VVMContract(ABIContract):
         If `return_type` is provided, the snippet is treated as an expression
         and the wrapper returns that type. Otherwise, no value is returned.
         """
-        wrapper_src = _generate_source_for_arbitrary_stmt(stmt, self, return_type)
+        wrapper_src = generate_source_for_arbitrary_stmt(stmt, return_type)
         # Always force, so multiple evals reuse the same name without conflicts
         self.inject_function(wrapper_src, force=True)
 
@@ -240,24 +240,3 @@ class VVMInjectedFunction(ABIFunction):
     @cached_property
     def source_code(self):
         return self._source_code
-
-
-# --- Eval helpers (VVM variant) ---
-def _generate_source_for_arbitrary_stmt(
-    source_code: str, contract: VVMContract, return_type: Optional[str]
-) -> str:
-    """Wrap arbitrary statements with an external function and generate source code.
-
-    If `return_type` is provided, wrap as an expression and return its value;
-    else, emit a statement wrapper without return.
-    """
-    if return_type:
-        return_sig = f"-> {return_type}"
-        debug_body = f"return {source_code}"
-    else:
-        return_sig = ""
-        debug_body = source_code
-
-    header = f"@external\n@payable\ndef __boa_debug__() {return_sig}:\n"
-    body = textwrap.indent(debug_body, "    ")
-    return header + body
