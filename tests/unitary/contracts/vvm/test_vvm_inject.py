@@ -5,11 +5,13 @@ import boa
 
 @pytest.fixture()
 def base_code():
-    return boa.loads("""
+    return boa.loads(
+        """
 # pragma version 0.3.10
 
 totalSupply: public(uint256)
-""")
+"""
+    )
 
 
 @pytest.fixture()
