@@ -78,7 +78,6 @@ class VVMDeployer:
         return None
 
     def deploy(self, *args, **kwargs):
-        # Accept optional kwargs without forcing keyword-only usage
         contract_name = kwargs.pop("contract_name", None)
         env = kwargs.pop("env", None)
         encoded_args = b""
@@ -184,11 +183,14 @@ class VVMContract(ABIContract):
         :param force: If True, the function will be injected even if it already exists.
         :returns: The result of the statement evaluation.
         """
-        fn = VVMInjectedFunction(fn_source_code, self)
-        if hasattr(self, fn.name) and not force:
-            raise ValueError(f"Function {fn.name} already exists on contract.")
-        setattr(self, fn.name, fn)
-        fn.contract = self
+        if not hasattr(self, "inject"):
+            self.inject = lambda: None
+
+        fn = _InjectVVMFunction(fn_source_code, self)
+        if hasattr(self.inject, fn.name) and not force:
+            raise ValueError(f"already injected: {fn.name}")
+
+        setattr(self.inject, fn.name, fn)
 
     def eval(
         self,
@@ -214,10 +216,10 @@ class VVMContract(ABIContract):
         return fn(value=value, gas=gas, sender=sender)
 
 
-class VVMInjectedFunction(ABIFunction):
+class _InjectVVMFunction(ABIFunction):
     def __init__(self, source_code: str, contract: VVMContract):
-        self.contract = contract
         self._source_code = source_code
+        self.contract = contract
         abi = [i for i in self._compiler_output["abi"] if i not in contract.abi]
         if len(abi) != 1:
             err = "Expected exactly one new ABI entry after injecting function. "
@@ -225,6 +227,9 @@ class VVMInjectedFunction(ABIFunction):
             raise ValueError(err)
 
         super().__init__(abi[0], contract.contract_name)
+        # Double assignment because ABIFunction __init__ sets it to None
+        # Perhaps we should change that behavior?
+        self.contract = contract
 
     @cached_property
     def _override_bytecode(self) -> bytes:
