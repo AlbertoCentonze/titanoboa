@@ -1,0 +1,113 @@
+.github/ISSUE_TEMPLATE/bug_report.yml
+  s_06de622c976290::t_dfd88b58558fe2 1-55
+.github/ISSUE_TEMPLATE/config.yml
+  s_06de622c976290::t_92dedf40a06ee7 1
+.github/ISSUE_TEMPLATE/feature_request.yml
+  s_06de622c976290::t_1f0ce1b16fa580 1-30
+.gitignore
+  s_06de622c976290::t_1325e0368c3154 10,13,21-22
+.pre-commit-config.yaml
+  s_06de622c976290::t_7432729966d17c 42
+boa/contracts/abi/abi_contract.py
+  s_06de622c976290::t_75ee98bfb421ee 128-131,141
+boa/contracts/vvm/vvm_contract.py
+  s_06de622c976290::t_3ab0e22c6c577a 4-5,7,9,39-41,52-54,57-59,63-65,136-227
+boa/contracts/vyper/ast_utils.py
+  s_06de622c976290::t_57ae174b213224 16
+boa/contracts/vyper/compiler_utils.py
+  s_06de622c976290::t_3367477079adab 1-2,4,13,15,18-20,22-31,51-154,173,177,180-187,189,192,240-245,248-249,251,253-262,264-275,282,286
+boa/contracts/vyper/ir_executor.py
+  s_06de622c976290::t_7f2aead77b20b9 27-31
+boa/contracts/vyper/vyper_contract.py
+  s_06de622c976290::t_ea7f4dc3b07bb2 48,328-334,558,585-589,614,627,821,909,913,967-980,1018-1021,1025,1027-1028,1030,1032-1036,1038,1043,1046-1061,1063-1067,1069,1100,1139-1146
+boa/coverage.py
+  s_06de622c976290::t_9cdc4eab8224b1 1,4,8,13-44,52,60,62-63,70-76,79-81,84-86,88-90,92-96,98-105,107-108,110,112-121,126-237,248-254,259-262
+boa/environment.py
+  s_06de622c976290::t_2d358359f76da4 28,250,339,349
+boa/explorer.py
+  s_06de622c976290::t_4c45f9d80d71f7 31-32,44,46-52,85,93,98,109,143,148-153,160-162,173,202
+boa/integrations/jupyter/browser.py
+  s_06de622c976290::t_63044fd7be0df7 5,19-23,146-282
+boa/interpret.py
+  s_06de622c976290::t_b7d18f9c867cad 19,39,120-123,129-157,178-196,223-232,310-313,315-322,389-393,416-420,429-435
+boa/network.py
+  s_06de622c976290::t_b2df3de1c36fa1 5,67-77,89-93,287,293-294,300-331
+boa/verifiers.py
+  s_06de622c976290::t_961db54e3d655b 19-24,208-211,216
+boa/vm/fork.py
+  s_06de622c976290::t_6b40fb9ffd9c30 1-2,5,9,26-54,109-121,125-127
+boa/vm/py_evm.py
+  s_06de622c976290::t_3b7a1e978260eb 164,167,235-248,257-261,272,435-443
+docs/api/env/network_env.md
+  s_06de622c976290::t_eae7a1d9f77388 17,24,40-45,58-59
+docs/assets/stylesheets/extra.css
+  s_06de622c976290::t_b4527a5ca0f9a7 115
+docs/guides/advanced_features.md
+  s_06de622c976290::t_281f2efaf5bb5a 439,441
+pyproject.toml
+  s_06de622c976290::t_e4ca31299467ea 3
+tests/coverage_utils.py
+  s_06de622c976290::t_a048ee27a27411 1-23
+tests/integration/fork/test_from_etherscan.py
+  s_06de622c976290::t_255b37121891d7 33-43
+tests/integration/fork/test_logs_fork.py
+  s_06de622c976290::t_dee4be300254b7 5,36,44-46
+tests/integration/network/sepolia/test_sepolia_env.py
+  s_06de622c976290::t_0c7036cb7dbf7e 37,52-54,58-81,102,106-108
+tests/integration/test_coverage_cli_smoke.py
+  s_06de622c976290::t_c3c45aa45ab2b4 1-189
+tests/integration/test_coverage_cross_contract.py
+  s_06de622c976290::t_148d945406b787 1-274
+tests/unitary/contracts/vvm/test_vvm_eval.py
+  s_06de622c976290::t_a8f79c318de899 1-13
+tests/unitary/contracts/vvm/test_vvm_inject.py
+  s_06de622c976290::t_9cfc748ba67a32 6-19,21-22,26-27,29-31,34-35,37-38,40
+tests/unitary/contracts/vyper/test_vyper_contract.py
+  s_06de622c976290::t_0de85f8851ee86 322-337
+tests/unitary/jupyter/test_browser.py
+  s_06de622c976290::t_57f9cb219624b7 11-12,118-120,329-589
+tests/unitary/test_call_internal_fn.py
+  s_06de622c976290::t_cb164b7137df41 11-13,42-53,123-137,168-192
+tests/unitary/test_coverage/conftest.py
+  s_06de622c976290::t_2e7906126d9962 1-127
+tests/unitary/test_coverage/test_branch.py
+  s_06de622c976290::t_8196d5ddac709d 1-729
+tests/unitary/test_coverage/test_branch_loops.py
+  s_06de622c976290::t_60009053137143 1-326
+tests/unitary/test_coverage/test_branch_multiline.py
+  s_06de622c976290::t_032cd930078cc4 1-126
+tests/unitary/test_coverage/test_branch_nested.py
+  s_06de622c976290::t_574fcc11162d06 1-247
+tests/unitary/test_coverage/test_collector_invariants.py
+  s_06de622c976290::t_fa93898b483237 1-332
+tests/unitary/test_coverage/test_optimize_policy.py
+  s_06de622c976290::t_b4e50f7bdf46c3 1-101
+tests/unitary/test_coverage/test_reporter.py
+  s_06de622c976290::t_7e4f64fd007ec9 1-277
+tests/unitary/test_injects.py
+  s_06de622c976290::t_13e419ad0e942f 15-21,29,45-55
+tests/unitary/test_network_fees.py
+  s_06de622c976290::t_dcc7e0df804f93 1-82
+tests/unitary/test_vyper_venom_compat.py
+  s_06de622c976290::t_8744e0cdead938 1-41
+tests/unitary/utils/test_cache.py
+  s_06de622c976290::t_979efd61ce3f87 1,8,10-16,79-140
+tests/unitary/utils/test_fork_cache.py
+  s_06de622c976290::t_9f193ee7e9ccf6 1-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "5118f0d11362fd905619d6c5f5476008e86c88c4",
+  "prompts": {},
+  "sessions": {
+    "s_06de622c976290": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a070c2-da9b-7160-b3e6-6b7e2749a31a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "AlbertoCentonze <11707683+AlbertoCentonze@users.noreply.github.com>"
+    }
+  }
+}

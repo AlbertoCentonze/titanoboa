@@ -1,0 +1,32 @@
+boa/contracts/vyper/vyper_contract.py
+  s_06de622c976290::t_ed4961ef37c3ff 89,675
+boa/contracts/abi/abi_contract.py
+  s_06de622c976290::t_ed4961ef37c3ff 443-446
+boa/contracts/call_trace.py
+  s_06de622c976290::t_b47bd709d04ea9 11,36-40
+  s_06de622c976290::t_ed4961ef37c3ff 8,32-33,113-118
+docs/api/exceptions/boa_error.md
+  s_06de622c976290::t_ed4961ef37c3ff 7-13
+docs/api/common_classes/handle_error.md
+  s_06de622c976290::t_ed4961ef37c3ff 8,15
+tests/unitary/test_error_formatting.py
+  s_06de622c976290::t_21b3ae4691dae0 19
+  s_06de622c976290::t_88992c9bd9039a 1-4,6-8,14-15,17-18,21-40,42-44,46-63,65-68,70-86,88-90,92-101,103-105,107-113
+  s_06de622c976290::t_b47bd709d04ea9 5,9-13,16,20,41,45,64,69,87,91,102,106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "b9368a564a990933a7aa4163f1e3e6d8c632709c",
+  "prompts": {},
+  "sessions": {
+    "s_06de622c976290": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a070c2-da9b-7160-b3e6-6b7e2749a31a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "AlbertoCentonze <11707683+AlbertoCentonze@users.noreply.github.com>"
+    }
+  }
+}
