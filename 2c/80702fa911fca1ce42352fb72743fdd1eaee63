@@ -1,0 +1,44 @@
+boa/util/sqlitedb.py
+  s_3ae8c68803bfd0::t_1e25b0f1939b2f 102-113
+tests/unitary/jupyter/test_handlers.py
+  s_3ae8c68803bfd0::t_1a3c49ceb15f70 76-77,81-84
+tests/unitary/jupyter/test_browser.py
+  s_3ae8c68803bfd0::t_1a3c49ceb15f70 426
+  s_3ae8c68803bfd0::t_ba7e23833dd1ba 463
+  s_abb51def927e72::t_9cb7bc07561e60 352,361,415,421,445,459,476,483,502,539,545
+tests/unitary/utils/test_sqlitedb.py
+  s_3ae8c68803bfd0::t_1e25b0f1939b2f 1-52
+tests/unitary/test_env_timestamp.py
+  s_3ae8c68803bfd0::t_ba7e23833dd1ba 26-27
+  s_3ae8c68803bfd0::t_1a3c49ceb15f70 23-25
+.github/workflows/main.yaml
+  s_3ae8c68803bfd0::t_b8cb28522c4a05 32,35-46
+tests/unitary/test_coverage/test_branch.py
+  s_3ae8c68803bfd0::t_1a3c49ceb15f70 14,697
+.coveragerc
+  s_3ae8c68803bfd0::t_b8cb28522c4a05 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "2c80702fa911fca1ce42352fb72743fdd1eaee63",
+  "prompts": {},
+  "sessions": {
+    "s_3ae8c68803bfd0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a070cd-0eba-7a22-888d-0de5e690926f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "AlbertoCentonze <11707683+AlbertoCentonze@users.noreply.github.com>"
+    },
+    "s_abb51def927e72": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a070cd-f31b-7232-ab61-1b0eb3718236",
+        "model": "unknown"
+      },
+      "human_author": "AlbertoCentonze <11707683+AlbertoCentonze@users.noreply.github.com>"
+    }
+  }
+}
